@@ -7,14 +7,14 @@ export class StoryProductionModel {
     private profilePhoto: any,
     private profileURL: string,
     private location: {
-      cities: {
-        name: string[]
-      }
+      cities: [{
+        name: string
+      }]
     },
     private startingBudget: BudgetModel,
     private startingTime: any,
     private isShortListed: boolean,
     private proposalDeposit: number,
-    private firstProposalFree: number
+    private firstProposalFree: boolean
   ) {}
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShortListService} from './short-list/short-list.service';
+import {CreativeSelectorService} from './shared/creative-selector.service';
 
 @Component({
   selector: 'app-creative-selector',
@@ -8,13 +9,17 @@ import {ShortListService} from './short-list/short-list.service';
 })
 export class CreativeSelectorComponent implements OnInit {
 
-  constructor(private shortListService: ShortListService) { }
+  shortlist: any[] = [];
+  constructor(private shortListService: ShortListService,
+              private creativeSelectorService: CreativeSelectorService) { }
 
   ngOnInit() {
   }
 
-  getShortList() {
-    this.shortListService.getShortList();
+  getShortList(id: number) {
+    this.creativeSelectorService.getShortlist(id);
+    this.shortlist = this.shortListService.getShortList();
+    return this.shortlist;
   }
 
 }

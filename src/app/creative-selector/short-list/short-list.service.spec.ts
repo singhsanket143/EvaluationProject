@@ -13,8 +13,7 @@ export class ShortListService {
     interactionLanguage: 'English'
   };
   private isIndividual: boolean;
-  private insufficientData: boolean;
-  shortListChanged = new Subject<any>();
+  private insufficientData: boolean
   shortListed: boolean;
 
   constructor() {
@@ -56,5 +55,19 @@ export class ShortListService {
   getIsIndividual() {
     return this.isIndividual;
   }
-
 }
+
+describe('ShortListService', () => {
+  let service: ShortListService;
+
+  beforeEach(() => {
+    service = new ShortListService();
+  });
+
+  it('should return shortlisted candidates', () => {
+    spyOn(service, 'getShortList').and.returnValue(Array);
+  });
+  it('should return filterd values', () => {
+    spyOn(service, 'getFilter').and.returnValue(Array);
+  });
+});

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShortListService} from './short-list.service';
 
 @Component({
@@ -8,11 +8,17 @@ import {ShortListService} from './short-list.service';
 })
 export class ShortListComponent implements OnInit {
 
-  constructor(private shortListService: ShortListService) { }
+  shortlist: any[];
 
-  ngOnInit() {
+  constructor(private shortListService: ShortListService) {
   }
 
-
-
+  ngOnInit() {
+    this.shortlist = this.shortListService.getShortList();
+    this.shortListService.shortListChanged.subscribe(
+      (shortlist: any[]) => {
+        this.shortlist = shortlist;
+      }
+    );
+  }
 }
